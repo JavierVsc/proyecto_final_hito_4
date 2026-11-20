@@ -1,0 +1,206 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "NEXBYTE API REST - Hito 3",
+  "version": "1.2",
+  "dateExported": "2026-11-15T00:00:00.000Z",
+  "folders": [],
+  "requests": [
+    {
+      "_id": "c2d962c6-d883-5666-ac7d-06db25959631",
+      "colId": "6e2ec85f-cb92-5619-9d16-7d05709146cc",
+      "containerId": "",
+      "name": "Health",
+      "url": "{{baseUrl}}/api/v1/health",
+      "method": "GET",
+      "sortNum": 10000,
+      "headers": [],
+      "created": "2026-11-15T14:00:00.000Z",
+      "modified": "2026-11-15T14:00:00.000Z",
+      "params": []
+    },
+    {
+      "_id": "7ba06d61-f6e5-5b41-91b5-96713b804765",
+      "colId": "6e2ec85f-cb92-5619-9d16-7d05709146cc",
+      "containerId": "",
+      "name": "Categorias",
+      "url": "{{baseUrl}}/api/v1/categories",
+      "method": "GET",
+      "sortNum": 20000,
+      "headers": [],
+      "created": "2026-11-15T14:00:00.000Z",
+      "modified": "2026-11-15T14:00:00.000Z",
+      "params": []
+    },
+    {
+      "_id": "89aba660-328e-59d1-91f5-8984b6b6a546",
+      "colId": "6e2ec85f-cb92-5619-9d16-7d05709146cc",
+      "containerId": "",
+      "name": "Catalogo",
+      "url": "{{baseUrl}}/api/v1/products",
+      "method": "GET",
+      "sortNum": 30000,
+      "headers": [],
+      "created": "2026-11-15T14:00:00.000Z",
+      "modified": "2026-11-15T14:00:00.000Z",
+      "params": []
+    },
+    {
+      "_id": "455690a1-b429-5b52-80c6-a83c69eed25e",
+      "colId": "6e2ec85f-cb92-5619-9d16-7d05709146cc",
+      "containerId": "",
+      "name": "Detalle producto",
+      "url": "{{baseUrl}}/api/v1/products/1",
+      "method": "GET",
+      "sortNum": 40000,
+      "headers": [],
+      "created": "2026-11-15T14:00:00.000Z",
+      "modified": "2026-11-15T14:00:00.000Z",
+      "params": []
+    },
+    {
+      "_id": "3e86175b-ff49-5e1b-972b-ee4ed9ded725",
+      "colId": "6e2ec85f-cb92-5619-9d16-7d05709146cc",
+      "containerId": "",
+      "name": "Registro cliente",
+      "url": "{{baseUrl}}/api/v1/auth/register",
+      "method": "POST",
+      "sortNum": 50000,
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\"full_name\":\"Cliente Prueba\",\"email\":\"cliente.prueba@nexbyte.cl\",\"password\":\"ClavePrueba123\"}",
+        "form": []
+      },
+      "created": "2026-11-15T14:00:00.000Z",
+      "modified": "2026-11-15T14:00:00.000Z",
+      "params": []
+    },
+    {
+      "_id": "ca6db702-68ce-5ff8-94f4-f193aa68b527",
+      "colId": "6e2ec85f-cb92-5619-9d16-7d05709146cc",
+      "containerId": "",
+      "name": "Login",
+      "url": "{{baseUrl}}/api/v1/auth/login",
+      "method": "POST",
+      "sortNum": 60000,
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\"email\":\"cliente.prueba@nexbyte.cl\",\"password\":\"ClavePrueba123\"}",
+        "form": []
+      },
+      "created": "2026-11-15T14:00:00.000Z",
+      "modified": "2026-11-15T14:00:00.000Z",
+      "params": []
+    },
+    {
+      "_id": "58f243f3-98fe-5366-b8cd-d0380096848b",
+      "colId": "6e2ec85f-cb92-5619-9d16-7d05709146cc",
+      "containerId": "",
+      "name": "Perfil con JWT",
+      "url": "{{baseUrl}}/api/v1/users/me",
+      "method": "GET",
+      "sortNum": 70000,
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{token}}"
+        }
+      ],
+      "created": "2026-11-15T14:00:00.000Z",
+      "modified": "2026-11-15T14:00:00.000Z",
+      "params": []
+    },
+    {
+      "_id": "9989d9a0-ac01-58cf-921e-dcd7ca2f861e",
+      "colId": "6e2ec85f-cb92-5619-9d16-7d05709146cc",
+      "containerId": "",
+      "name": "Productos admin",
+      "url": "{{baseUrl}}/api/v1/products",
+      "method": "POST",
+      "sortNum": 80000,
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{token}}"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\"category_id\":1,\"name\":\"Notebook nuevo\",\"brand\":\"NEXBYTE\",\"sku\":\"NB-NEW-001\",\"description\":\"Notebook de prueba\",\"price_clp\":399990,\"stock\":5,\"images\":[]}",
+        "form": []
+      },
+      "created": "2026-11-15T14:00:00.000Z",
+      "modified": "2026-11-15T14:00:00.000Z",
+      "params": []
+    },
+    {
+      "_id": "329e096a-4aeb-506e-b135-dfe43ee46891",
+      "colId": "6e2ec85f-cb92-5619-9d16-7d05709146cc",
+      "containerId": "",
+      "name": "Favoritos",
+      "url": "{{baseUrl}}/api/v1/favorites",
+      "method": "GET",
+      "sortNum": 90000,
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{token}}"
+        }
+      ],
+      "created": "2026-11-15T14:00:00.000Z",
+      "modified": "2026-11-15T14:00:00.000Z",
+      "params": []
+    },
+    {
+      "_id": "ecddbd02-1940-5c86-9a61-87781b5cd28d",
+      "colId": "6e2ec85f-cb92-5619-9d16-7d05709146cc",
+      "containerId": "",
+      "name": "Carrito",
+      "url": "{{baseUrl}}/api/v1/cart",
+      "method": "GET",
+      "sortNum": 100000,
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{token}}"
+        }
+      ],
+      "created": "2026-11-15T14:00:00.000Z",
+      "modified": "2026-11-15T14:00:00.000Z",
+      "params": []
+    },
+    {
+      "_id": "da4d7998-98ad-56d4-9129-c07ef63f7282",
+      "colId": "6e2ec85f-cb92-5619-9d16-7d05709146cc",
+      "containerId": "",
+      "name": "Pedidos",
+      "url": "{{baseUrl}}/api/v1/orders",
+      "method": "GET",
+      "sortNum": 110000,
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{token}}"
+        }
+      ],
+      "created": "2026-11-15T14:00:00.000Z",
+      "modified": "2026-11-15T14:00:00.000Z",
+      "params": []
+    }
+  ]
+}

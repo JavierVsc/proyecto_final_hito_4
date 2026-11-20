@@ -1,0 +1,14 @@
+# Dependencias
+**/node_modules/
+
+# Compilaciones
+**/dist/
+**/build/
+
+# Credenciales y configuraciones locales
+**/.env
+**/.env.*
+!**/.env.example
+
+# Archivos del sistema
+**/.DS_Store
