@@ -3,9 +3,23 @@
 
 **Proyecto final — Hito 4: Integración y despliegue**
 
-NEXBYTE es una tienda online de productos tecnológicos, desarrollada con React, Node.js, Express y PostgreSQL.
+NEXBYTE es una tienda online de productos tecnológicos desarrollada con React, Node.js, Express y PostgreSQL.
 
-La plataforma tiene un único vendedor: NEXBYTE. Los clientes pueden registrarse, iniciar sesión, consultar productos, guardar favoritos, administrar su carrito, registrar pedidos y revisar su perfil. La gestión del catálogo está reservada al administrador.
+La plataforma funciona con un único vendedor: NEXBYTE. Los clientes pueden registrarse, iniciar sesión, consultar productos, guardar favoritos, administrar su carrito, registrar pedidos y revisar su perfil. La administración del catálogo está reservada a usuarios con rol administrador.
+
+## Aplicación desplegada
+
+**Frontend:** https://nexbyte-hito-4.onrender.com
+
+**Repositorio GitHub:** https://github.com/JavierVsc/proyecto_final_hito_4
+
+**Backend:** https://proyecto-final-hito-3.onrender.com
+
+**Estado de la API:** https://proyecto-final-hito-3.onrender.com/api/v1/health
+
+**Conexión PostgreSQL:** https://proyecto-final-hito-3.onrender.com/api/v1/health/db
+
+**Catálogo desde la API:** https://proyecto-final-hito-3.onrender.com/api/v1/products
 
 ## Arquitectura
 
@@ -19,39 +33,31 @@ La plataforma tiene un único vendedor: NEXBYTE. Los clientes pueden registrarse
 | Autenticación | JWT y bcrypt |
 | Despliegue | Render |
 
-## Aplicación desplegada
-
-**Frontend del Hito 4:** enlace pendiente de publicación.
-
-**Backend:** https://proyecto-final-hito-3.onrender.com
-
-**Estado de la API:** https://proyecto-final-hito-3.onrender.com/api/v1/health
-
-**Conexión PostgreSQL:** https://proyecto-final-hito-3.onrender.com/api/v1/health/db
-
-**Catálogo desde la API:** https://proyecto-final-hito-3.onrender.com/api/v1/products
-
-El Hito 4 reutiliza el backend y la base de datos desplegados durante el Hito 3, integrándolos con una nueva versión de la aplicación cliente.
-
-## Cumplimiento del Hito 4
+## Cumplimiento de los requisitos del Hito 4
 
 ### 1. Despliegue de la aplicación cliente
 
-El frontend está desarrollado con React y Vite, y preparado para su publicación como sitio estático en Render.
+El frontend está desplegado en Render como Static Site.
 
-Se utiliza React Router para la navegación y una regla de reescritura para permitir el acceso directo a las rutas de la aplicación.
+La aplicación utiliza React Router y una regla de reescritura para permitir el acceso directo a las diferentes páginas sin errores de navegación.
+
+**URL:** https://nexbyte-hito-4.onrender.com
 
 ### 2. Despliegue del backend
 
-La API REST de NEXBYTE está desplegada como Web Service en Render.
+La API REST desarrollada en el Hito 3 está publicada en Render mediante un Web Service.
 
-El backend proporciona rutas para autenticación, usuarios, categorías, productos, favoritos, carrito y pedidos.
+Se reutiliza el backend existente para atender las solicitudes de la aplicación cliente del Hito 4.
+
+La API incluye rutas para autenticación, usuarios, categorías, productos, favoritos, carrito y pedidos.
+
+**URL:** https://proyecto-final-hito-3.onrender.com
 
 ### 3. Despliegue de la base de datos
 
 La aplicación utiliza PostgreSQL alojado en Render.
 
-El modelo incluye nueve tablas:
+El modelo relacional está compuesto por nueve tablas:
 
 - users
 - categories
@@ -63,58 +69,78 @@ El modelo incluye nueve tablas:
 - orders
 - order_items
 
-### 4. Integración entre frontend y backend
+Los registros se almacenan en la base de datos y pueden recuperarse posteriormente desde la aplicación cliente.
 
-La aplicación cliente consume la API REST mediante solicitudes HTTP.
+### 4. Integración entre aplicación cliente y backend
+
+El frontend React se comunica con la API REST de Express mediante solicitudes HTTP.
 
 Las funcionalidades integradas incluyen:
 
 - Consulta del catálogo de productos.
-- Registro e inicio de sesión de usuarios.
+- Registro e inicio de sesión.
 - Autenticación mediante JWT.
-- Consulta y edición del perfil.
-- Favoritos persistentes.
+- Consulta y actualización del perfil.
+- Favoritos persistentes por usuario.
 - Carrito de compras persistente.
-- Registro y consulta de pedidos.
-- Validación de stock al confirmar pedidos.
-- Creación de productos con permisos de administrador.
+- Registro y consulta del historial de pedidos.
+- Validación y actualización de stock.
+- Administración de productos con control de permisos.
 
-La persistencia de los datos se realiza en PostgreSQL y permite recuperar la información después de cerrar sesión y volver a ingresar.
+Se comprobó que la información permanece disponible después de cerrar sesión y volver a ingresar.
 
 ## Estructura del proyecto
 
-- `frontend/`: aplicación React, componentes, páginas, servicios y estilos.
-- `backend/src/`: API Express, rutas, middlewares y conexión a PostgreSQL.
-- `backend/db/`: estructura de la base de datos.
-- `backend/scripts/`: scripts de inicialización y administración.
-- `backend/tests/`: pruebas automatizadas del backend.
-- `frontend/tests/`: pruebas automatizadas del frontend.
+| Directorio | Contenido |
+| --- | --- |
+| `frontend/` | Aplicación React, páginas, componentes, estilos y servicios |
+| `frontend/src/context/` | Gestión del estado global de NEXBYTE |
+| `frontend/src/services/` | Comunicación con la API REST |
+| `backend/src/` | Servidor Express, rutas y middlewares |
+| `backend/db/` | Estructura de PostgreSQL |
+| `backend/scripts/` | Inicialización y administración de datos |
+| `backend/tests/` | Pruebas automatizadas del servidor |
+| `frontend/tests/` | Pruebas automatizadas del frontend |
 
-## Pruebas
+## Pruebas realizadas
 
-Frontend:
+### Frontend
 
+- Compilación de producción con Vite completada.
 - 4 pruebas automatizadas aprobadas.
-- Compilación de producción realizada con Vite.
 
-Backend:
+### Backend
 
 - 15 pruebas automatizadas aprobadas con Node.js y Supertest.
 
-También se verificaron manualmente las funcionalidades integradas y su persistencia desde la aplicación cliente.
+### Integración en producción
+
+Se comprobaron desde el sitio público:
+
+- Visualización del catálogo.
+- Autenticación de usuarios.
+- Persistencia de favoritos.
+- Persistencia del carrito.
+- Registro y recuperación de pedidos.
+- Consulta y edición del perfil.
+- Creación de productos por administración.
+
+Las pruebas confirmaron el funcionamiento de la comunicación entre el frontend, el backend y PostgreSQL.
 
 ## Configuración
 
-El frontend utiliza la variable de entorno `VITE_API_URL` para definir la dirección del backend.
+El frontend utiliza la variable `VITE_API_URL` para establecer la dirección del backend.
 
-El backend utiliza variables de entorno para la conexión a PostgreSQL, el secreto JWT y los orígenes autorizados mediante CORS.
+El backend utiliza variables de entorno para configurar PostgreSQL, la autenticación JWT y los orígenes autorizados mediante CORS.
 
-Los archivos con credenciales privadas no se incluyen en el repositorio.
+Los archivos que contienen credenciales privadas están excluidos del repositorio mediante `.gitignore`.
 
 ## Alcance
 
-NEXBYTE es un proyecto académico de comercio electrónico. El registro de pedidos no implica un cobro real y no existe integración con pasarelas de pago.
+NEXBYTE es un proyecto académico de comercio electrónico.
+
+El sistema permite registrar pedidos, pero no procesa pagos ni realiza cobros reales.
 
 Los clientes no pueden publicar productos. La administración del catálogo corresponde exclusivamente a NEXBYTE.
 
-Se conserva la identidad visual oficial del proyecto, incluyendo su logotipo, colores y diseño.
+El proyecto conserva su identidad visual oficial, incluyendo el logotipo, los colores y el diseño.
